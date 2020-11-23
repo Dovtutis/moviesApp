@@ -1,0 +1,79 @@
+
+#mainContainer {
+    background-color: #999898;
+}
+
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.display_flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.spaceAround {
+    justify-content: space-around;
+}
+
+.spaceBetween {
+    justify-content: space-between;
+}
+
+.align-self-end {
+    align-self: end;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.positionRelative {
+    position: relative;
+}
+
+.textAlignCenter {
+    text-align: center;
+}
+
+.fontSize30 {
+    font-size: 30px;
+}
+
+.fontSize20 {
+    font-size: 20px;
+}
+
+.fontBold {
+    font-weight: bold;
+}
+
+.margin10 {
+    margin: 10px;
+}
+
+.movieCard {
+    width: 300px;
+    height: 500px;
+    margin: 30px;
+    border-radius: 20px;
+    background-color: #ff91a7;
+}
+
+#aboutButton {
+    width: 150px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+}

@@ -73,6 +73,10 @@ const movies = [
 const mainContainer = document.getElementById('mainContainer')
 const moviePage = document.getElementById('moviePage')
 const backButton = document.getElementById('backButton').onclick = backToList
+const addMovieButton = document.getElementById('addMovieButton').onclick = addMovie
+const submitNewMovieButton = document.getElementById('submitNewMovieButton').onclick = submitMovie
+const addMovieScreen = document.getElementById('addMovieScreen')
+const addMovieButtonContainer = document.getElementById('addMovieButtonContainer')
 let movieContainer = document.getElementById('movieContainer')
 let commentsContainer
 let selectedItem = []
@@ -86,6 +90,9 @@ function backToList () {
 createMovies ()
 
 function createMovies () {
+
+    moviePage.style.display = "none"
+
     movies.map(item =>{
 
         starRating = ""
@@ -137,6 +144,7 @@ function openMovie (event) {
     console.log(selectedItem)
 
     mainContainer.style.display = "none"
+    addMovieButtonContainer.style.display = "none"
     moviePage.style.display = "block"
     movieContainer.style.display = "block"
 
@@ -188,20 +196,23 @@ function openMovie (event) {
 }
 
 function addComment () {
-    console.log("labas")
     commentsContainer = document.getElementById('commentsContainer')
     commentsContainer.innerHTML = ""
-    for (let i = 0; i < selectedItem[0].comments.length; i++) {
-        console.log("testas")
-        commentsContainer.innerHTML +=
-            `
-         <div class="display_flex justify-content-center comment textAlignCenter margin10 commentBox">
-            <div>
+
+        for (let i = 0; i < selectedItem[0].comments.length; i++) {
+            console.log("testas")
+            commentsContainer.innerHTML +=
+                `
+        <div class="display_flex justify-content-center comment textAlignCenter margin10 commentBox">
+            <div id="${i}">
                 ${selectedItem[0].comments[i].name}: ${selectedItem[0].comments[i].comment} 
+            </div>
+            <div>
+                <button class="removeCommentButton" onclick="removeComment(event)">Remove Comment</button>
             </div>
         </div>
             `
-    }
+        }
 }
 
 function saveComment (event) {
@@ -227,3 +238,22 @@ function saveComment (event) {
     addComment ()
 }
 
+function removeComment (event) {
+
+    let id = Number(event.path[2].children[0].id)
+    selectedItem[0].comments = selectedItem[0].comments.filter((item, index) => index !== id)
+    console.log(selectedItem)
+
+    addComment ()
+}
+
+function addMovie () {
+    moviePage.style.display = "none"
+    mainContainer.style.display = "none"
+    addMovieButtonContainer.style.display = "none"
+    addMovieScreen.style.display = "flex"
+}
+
+function submitMovie () {
+
+}

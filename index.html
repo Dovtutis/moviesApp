@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>GET</title>
+    <title>Movies</title>
     <script type="text/javascript" defer src="js/movies.js"></script>
     <link rel="stylesheet" type="text/css" href="css/movies.css">
     <script src="https://kit.fontawesome.com/42762d49f1.js" crossorigin="anonymous"></script>
@@ -9,6 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="addMovieButtonContainer">
+        <button id="addMovieButton">Add Movie</button>
+    </div>
     <div id="mainContainer" class="display_flex wrap spaceAround">
 
     </div>
@@ -20,6 +23,26 @@
         </div>
         <div id="movieContainer">
 
+        </div>
+    </div>
+    <div id="addMovieScreen" class="justify-content-center flex-column align-items-center">
+        <div>
+            <input type="text" name="image" placeholder="Enter movie image" class="addInput" autocomplete="off">
+        </div>
+        <div>
+            <input type="text" name="title" placeholder="Enter movie title" class="addInput" autocomplete="off">
+        </div>
+        <div>
+            <input type="text" name="year" placeholder="Enter movie year" class="addInput" autocomplete="off">
+        </div>
+        <div>
+            <input type="text" name="rating" placeholder="Enter movie rating" class="addInput" autocomplete="off">
+        </div>
+        <div>
+            <input type="text" name="description" placeholder="Enter movie description" class="addInput" autocomplete="off">
+        </div>
+        <div>
+            <button id="submitNewMovieButton">Submit</button>
         </div>
     </div>
 </body>

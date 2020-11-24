@@ -143,9 +143,41 @@ body {
     line-height: 20px;
 }
 
+.removeCommentButton {
+    width: 160px;
+    height: 40px;
+    margin: 0 10px;
+    font-size: 15px;
+    line-height: 15px;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    transition: .4s;
+}
 
+#addMovieButton {
+    width: 250px;
+    height: 250px;
+    border-radius: 25px;
+    background-color: gold;
+    color: red;
+    text-align: center;
+    line-height: 250px;
+    cursor: pointer;
+    position: absolute;
+    right: 40px;
+    top:  40px;
+    font-size: 30px;
+    font-weight: bold;
+}
 
-
+.addInput {
+    width: 400px;
+    height: 20px;
+    font-size: 20px;
+}
 
 
 

@@ -67,6 +67,9 @@
     color: gold;
 }
 
+.margin0auto {
+    margin: 0 auto;
+}
 
 body {
     font-family: 'Oswald', sans-serif;
@@ -194,3 +197,9 @@ body {
     height: 318px;
 }
 
+#nameInput {
+    width: 150px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 10px;
+}

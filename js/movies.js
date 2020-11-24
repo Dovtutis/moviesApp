@@ -7,7 +7,7 @@ const movies = [
         rating: "8.6",
         description: "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
         comments: [],
-        youtube: "",
+        youtube: "https://www.youtube.com/embed/5xH0HfJHsaY",
         id: 0
     },
     {
@@ -20,7 +20,7 @@ const movies = [
             name: "John",
             comment: "So boring, i fall asleep to it and hibernated through whole winter"
         }],
-        youtube: "",
+        youtube: "https://www.youtube.com/embed/CDrieqwSdgI",
         id: 1
     },
     {
@@ -39,7 +39,7 @@ const movies = [
                 comment: "My parents was not impressed with this"
             },
         ],
-        youtube: "",
+        youtube: "https://www.youtube.com/embed/zAGVQLHvwOY",
         id: 2
     },
     {
@@ -49,7 +49,7 @@ const movies = [
         rating: "9.2",
         description: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
         comments: [],
-        youtube: "",
+        youtube: "https://www.youtube.com/embed/sY1S34973zA",
         id: 3
     },
     {
@@ -59,7 +59,7 @@ const movies = [
         rating: "8.9",
         description: "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
         comments: [],
-        youtube: "",
+        youtube: "https://www.youtube.com/embed/s7EdQ4FqbhY",
         id: 4
     },
     {
@@ -72,7 +72,7 @@ const movies = [
             name: "Jane",
             comment: "Soundtrack is epic"
         }],
-        youtube: "",
+        youtube: "https://www.youtube.com/embed/5Cb3ik6zP2I",
         id: 5
     },
 ]
@@ -88,17 +88,19 @@ let commentsContainer
 let selectedItem = []
 let starRating = ""
 
+createMovies ()
+
 function backToList () {
     moviePage.style.display = "none"
     mainContainer.style.display = "flex"
+    addMovieButtonContainer.style.display = "block"
 }
-
-createMovies ()
 
 function createMovies () {
     addMovieScreen.style.display = "none"
     moviePage.style.display = "none"
     mainContainer.style.display = "flex"
+    addMovieButtonContainer.style.display = "block"
 
     movies.map(item =>{
 
@@ -179,7 +181,7 @@ function openMovie (event) {
                 </div>
                 <div class="margin5">
                      <iframe width="420" height="315"
-                        src="https://www.youtube.com/embed/LtaVzAXoU5w">
+                        src="${selectedItem[0].youtube}">
                      </iframe> 
                 </div>
             </div>
@@ -197,6 +199,11 @@ function openMovie (event) {
 
         movieContainer.innerHTML +=
         `
+        <div class="margin10 display_flex justify-content-center">
+            <div>
+                <input type="text" placeholder="Your name:" autocomplete="off" id="nameInput">
+            </div>  
+        </div>
         <div class="display_flex justify-content-center">
             <div>
                 <textarea name="comment" rows="10" cols="30" placeholder="Write your comment..." class="inputCommentBox"></textarea>
@@ -235,7 +242,7 @@ function saveComment (event) {
     console.log(event.path[1].children[0].value)
 
     let comment = {
-        name: "User",
+        name: event.path[3].children[3].children[0].children[0].value,
         comment: event.path[1].children[0].value
     }
     movies[id].comments.push(comment)
@@ -268,6 +275,18 @@ function addMovie () {
 
 function submitMovie (event) {
 
+    let youtubeLink = event.path[2].children[5].children[0].value
+    let newLink = ""
+    let defaultYoutubePath = "https://www.youtube.com/embed/"
+
+    if (youtubeLink.includes("https://www.youtube.com/watch?v=")) {
+        newLink = youtubeLink.replace("https://www.youtube.com/watch?v=", "")
+    } else {
+        newLink = youtubeLink.replace("https://youtu.be/", "")
+    }
+
+    console.log("youtube linkas " + newLink)
+
     if (event.path[2].children[1].children[0].value.length > 0){
         let newMovie = {
             image: event.path[2].children[0].children[0].value,
@@ -276,9 +295,11 @@ function submitMovie (event) {
             rating: event.path[2].children[3].children[0].value,
             description: event.path[2].children[4].children[0].value,
             comments: [],
-            youtube: event.path[2].children[5].children[0].value,
+            youtube: defaultYoutubePath + newLink,
             id: movies.length
         }
+
+        console.log(newMovie)
 
         movies.push(newMovie)
         mainContainer.innerHTML = ""

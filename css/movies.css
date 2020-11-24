@@ -68,6 +68,9 @@ body {
     font-family: 'Oswald', sans-serif;
 }
 
+#backButtonDiv {
+    background-color: #999898;
+}
 
 .movieCard {
     width: 300px;
@@ -89,6 +92,19 @@ body {
     transition: .4s;
 }
 
+.aboutButton {
+    width: 250px;
+    height: 50px;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    transition: .4s;
+}
+
 #aboutButton:hover {
     transform: scale(1.2);
 }
@@ -100,7 +116,7 @@ body {
 
 #movieContainer {
     background-color: #999898;
-    padding: 300px;
+    padding: 80px 300px 300px 300px;
     display: none;
 }
 

@@ -71,14 +71,26 @@ const movies = [
     },
 ]
 const mainContainer = document.getElementById('mainContainer')
+const moviePage = document.getElementById('moviePage')
+const backButton = document.getElementById('backButton').onclick = backToList
 let movieContainer = document.getElementById('movieContainer')
 let commentsContainer
 let selectedItem = []
+let starRating = ""
+
+function backToList () {
+    moviePage.style.display = "none"
+    mainContainer.style.display = "flex"
+}
 
 createMovies ()
 
 function createMovies () {
     movies.map(item =>{
+
+        starRating = ""
+        createStarRating (Number(Math.round(item.rating)))
+
         mainContainer.innerHTML += `
         <div class="movieCard display_flex flex-column justify-content-center align-items-center">
             <div class="">
@@ -91,7 +103,7 @@ function createMovies () {
                 ${item.year}
             </div>
             <div class="textAlignCenter fontSize20 margin5">
-                ${item.rating}
+                ${starRating}
             </div>
             <div class="margin5">
                 <button id="aboutButton" onclick="openMovie(event)">About movie</button>
@@ -101,6 +113,23 @@ function createMovies () {
     })
 }
 
+function createStarRating (num) {
+    console.log(num)
+    for (let i = 1; i <= num; i++){
+        starRating +=
+            `
+        <i class="fas fa-star"></i>
+        `
+    }
+
+    for (let i = 0; i < (10-num); i++){
+        starRating +=
+            `
+            <i class="far fa-star"></i>
+            `
+    }
+}
+
 function openMovie (event) {
 
     selectedItem = []
@@ -108,7 +137,11 @@ function openMovie (event) {
     console.log(selectedItem)
 
     mainContainer.style.display = "none"
+    moviePage.style.display = "block"
     movieContainer.style.display = "block"
+
+    starRating = ""
+    createStarRating (Number(Math.round(selectedItem[0].rating)))
 
     movieContainer.innerHTML =
         `
@@ -124,7 +157,7 @@ function openMovie (event) {
                     ${selectedItem[0].year}
                 </div>
                 <div class="textAlignCenter fontSize20 margin5">
-                    ${selectedItem[0].rating}
+                    ${starRating}
                 </div>
                 <div class="textAlignCenter fontSize20 margin5">
                     ${selectedItem[0].description}
@@ -182,7 +215,7 @@ function saveComment (event) {
         name: "User",
         comment: event.path[1].children[0].value
     }
-    movies[id].comments.unshift(comment)
+    movies[id].comments.push(comment)
 
     console.log(movies)
 

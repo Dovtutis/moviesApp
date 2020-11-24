@@ -7,6 +7,7 @@ const movies = [
         rating: "8.6",
         description: "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
         comments: [],
+        youtube: "",
         id: 0
     },
     {
@@ -19,6 +20,7 @@ const movies = [
             name: "John",
             comment: "So boring, i fall asleep to it and hibernated through whole winter"
         }],
+        youtube: "",
         id: 1
     },
     {
@@ -37,6 +39,7 @@ const movies = [
                 comment: "My parents was not impressed with this"
             },
         ],
+        youtube: "",
         id: 2
     },
     {
@@ -46,6 +49,7 @@ const movies = [
         rating: "9.2",
         description: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
         comments: [],
+        youtube: "",
         id: 3
     },
     {
@@ -55,6 +59,7 @@ const movies = [
         rating: "8.9",
         description: "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
         comments: [],
+        youtube: "",
         id: 4
     },
     {
@@ -67,6 +72,7 @@ const movies = [
             name: "Jane",
             comment: "Soundtrack is epic"
         }],
+        youtube: "",
         id: 5
     },
 ]
@@ -126,14 +132,14 @@ function createStarRating (num) {
     for (let i = 1; i <= num; i++){
         starRating +=
             `
-        <i class="fas fa-star"></i>
+        <i class="fas fa-star gold"></i>
         `
     }
 
     for (let i = 0; i < (10-num); i++){
         starRating +=
             `
-            <i class="far fa-star"></i>
+            <i class="far fa-star gold"></i>
             `
     }
 }
@@ -156,7 +162,7 @@ function openMovie (event) {
         `
         <div class="display_flex spaceAround">
             <div>
-                <img src="${selectedItem[0].image}" class="img">
+                <img src="${selectedItem[0].image}" class="imgBigger">
             </div>
             <div class="display_flex flex-column justify-content-center align-items-center" id="infoContainer">
                 <div class="textAlignCenter fontSize30 margin5 fontBold">
@@ -170,6 +176,11 @@ function openMovie (event) {
                 </div>
                 <div class="textAlignCenter fontSize20 margin5">
                     ${selectedItem[0].description}
+                </div>
+                <div class="margin5">
+                     <iframe width="420" height="315"
+                        src="https://www.youtube.com/embed/LtaVzAXoU5w">
+                     </iframe> 
                 </div>
             </div>
         </div>
@@ -265,6 +276,7 @@ function submitMovie (event) {
             rating: event.path[2].children[3].children[0].value,
             description: event.path[2].children[4].children[0].value,
             comments: [],
+            youtube: event.path[2].children[5].children[0].value,
             id: movies.length
         }
 

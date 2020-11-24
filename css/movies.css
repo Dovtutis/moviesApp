@@ -63,6 +63,10 @@
     margin: 5px;
 }
 
+.gold {
+    color: gold;
+}
+
 
 body {
     font-family: 'Oswald', sans-serif;
@@ -121,7 +125,7 @@ body {
 }
 
 #infoContainer {
-    margin: 0px 200px;
+    margin: 0px 200px 0px 50px
 }
 
 .comment {
@@ -184,4 +188,9 @@ body {
     height: 268px;
 }
 
+
+.imgBigger {
+    width: 232px;
+    height: 318px;
+}
 

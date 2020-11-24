@@ -90,8 +90,9 @@ function backToList () {
 createMovies ()
 
 function createMovies () {
-
+    addMovieScreen.style.display = "none"
     moviePage.style.display = "none"
+    mainContainer.style.display = "flex"
 
     movies.map(item =>{
 
@@ -101,7 +102,7 @@ function createMovies () {
         mainContainer.innerHTML += `
         <div class="movieCard display_flex flex-column justify-content-center align-items-center">
             <div class="">
-                <img src="${item.image}">
+                <img src="${item.image}" class="img">
             </div>
             <div class="textAlignCenter fontSize30 margin5 fontBold">
                 ${item.title}
@@ -155,7 +156,7 @@ function openMovie (event) {
         `
         <div class="display_flex spaceAround">
             <div>
-                <img src="${selectedItem[0].image}">
+                <img src="${selectedItem[0].image}" class="img">
             </div>
             <div class="display_flex flex-column justify-content-center align-items-center" id="infoContainer">
                 <div class="textAlignCenter fontSize30 margin5 fontBold">
@@ -254,6 +255,22 @@ function addMovie () {
     addMovieScreen.style.display = "flex"
 }
 
-function submitMovie () {
+function submitMovie (event) {
 
+    console.log(event)
+    console.log(event.path[2].children[0].children[0].value)
+
+    let newMovie = {
+        image: event.path[2].children[0].children[0].value,
+        title: event.path[2].children[1].children[0].value,
+        year: event.path[2].children[2].children[0].value,
+        rating: event.path[2].children[3].children[0].value,
+        description: event.path[2].children[4].children[0].value,
+        comments: [],
+        id: movies.length
+    }
+
+    movies.push(newMovie)
+    mainContainer.innerHTML = ""
+    createMovies ()
 }

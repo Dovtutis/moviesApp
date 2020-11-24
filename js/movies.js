@@ -257,20 +257,21 @@ function addMovie () {
 
 function submitMovie (event) {
 
-    console.log(event)
-    console.log(event.path[2].children[0].children[0].value)
+    if (event.path[2].children[1].children[0].value.length > 0){
+        let newMovie = {
+            image: event.path[2].children[0].children[0].value,
+            title: event.path[2].children[1].children[0].value,
+            year: event.path[2].children[2].children[0].value,
+            rating: event.path[2].children[3].children[0].value,
+            description: event.path[2].children[4].children[0].value,
+            comments: [],
+            id: movies.length
+        }
 
-    let newMovie = {
-        image: event.path[2].children[0].children[0].value,
-        title: event.path[2].children[1].children[0].value,
-        year: event.path[2].children[2].children[0].value,
-        rating: event.path[2].children[3].children[0].value,
-        description: event.path[2].children[4].children[0].value,
-        comments: [],
-        id: movies.length
+        movies.push(newMovie)
+        mainContainer.innerHTML = ""
+        createMovies ()
+    } else {
+        alert("YOU MUST WRITE MOVIE TITLE!")
     }
-
-    movies.push(newMovie)
-    mainContainer.innerHTML = ""
-    createMovies ()
 }
